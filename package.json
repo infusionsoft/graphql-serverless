@@ -1,18 +1,21 @@
 {
-	"name": "your-webfunc-app",
-	"version": "1.0.0",
+	"name": "graphql-testing",
+	"version": "1.0.1",
 	"scripts": {
 		"deploy:prod": "nowflow production",
 		"deploy:staging": "nowflow staging",
+		"deploy": "nowflow gcf",
 		"start": "node-dev index.js",
 		"test": "mocha"
 	},
 	"dependencies": {
+		"axios": "^0.17.1",
 		"graphql-s2s": "^0.3.2",
 		"graphql-serverless": "^0.3.1-alpha.0",
 		"http-errors": "^1.6.1",
 		"lodash": "^4.17.4",
 		"schemaglue": "^1.5.1",
+		"stdout": "^0.0.3",
 		"webfunc": "^0.11.1-alpha.0"
 	},
 	"devDependencies": {

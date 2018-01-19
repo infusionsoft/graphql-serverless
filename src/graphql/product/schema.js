@@ -11,5 +11,15 @@ exports.query = `
   #
   # _Arguments_
   # - **id**: Product's id (optional)
-  products(id: Int): [Product]
+  #products(id: Int): [Product]
+  products(name: String): [Product],
+
+
+
+
+  # ### GET products
+  #
+  # _Arguments_
+  # - **id**: Product's id (optional)
+  product(id: Int): [Product]
 `
