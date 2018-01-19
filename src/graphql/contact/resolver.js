@@ -39,7 +39,7 @@ exports.resolver = {
 			else
 				throw httpError(404, `Contact with id ${id} does not exist.`)
 		},
-		contacts(root, contact, context) {
+		contact(root, contact, context) {
 			return instance.request(requestConfig).then((response) => {
 				results = []
 				const data = response.data.results[0]
@@ -49,12 +49,9 @@ exports.resolver = {
 					lastName: data.name.last,
 					email: data.email
 				}
-				console.log(c)
-				// console.log(`Data: ${response.data.title}`);
-				// response.status(200).send(c);
 				results = [c]
 				return results;
-			}).then((result) => result);
+			})
 		}
 	}
 }

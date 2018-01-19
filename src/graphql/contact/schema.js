@@ -12,7 +12,7 @@ exports.query = `
   #
   # _Arguments_
   # - **id**: Product's id (optional)
-  contacts(id: Int): [Contact],
+  contact(): [Contact],
   # contacts(firstName: String): [Contact],
   # contacts(lastName: String): [Contact],
   contactMocks(firstName: String): [Contact]
