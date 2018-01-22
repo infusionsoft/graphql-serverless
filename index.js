@@ -15,11 +15,11 @@ const executableSchema = makeExecutableSchema({
 	resolvers: resolver
 })
 
-const graphqlOptions = {
+var graphqlOptions = {
 	schema: executableSchema,
 	graphiql: true,
 	endpointURL: '/graphiql',
-	context: { animal:'bunny' } // add whatever global context is relevant to you app
+	context: {} // add whatever global context is relevant to you app
 }
 
 const instance = axios.create({
