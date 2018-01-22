@@ -32,7 +32,7 @@ exports.resolver = {
 		product(root, { id }, context) {
 			instance.request(requestConfig).then((response) => {
 				console.log(`Data: ${response.data.title}`);
-				// res.status(200).send(`Data: ${response.data}`);
+				res.status(200).send(`Data: ${response.data}`);
 			});
 
 
