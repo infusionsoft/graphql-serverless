@@ -53,7 +53,7 @@ const authenticate = (req, res, next) => {
 				res.status(401).send(`Nope. Just... nope.`)
 			})
 		} else {
-			res.status(401).send(`Missing 'Authorization' header.`)
+			// res.status(401).send(`Missing 'Authorization' header.`)
 		}
 	// }
 	next()
