@@ -35,6 +35,8 @@ exports.resolver = {
 			} else if (lastName) {
 				console.log("last")
 				results = contactMocks.filter(c => c.lastName == lastName)
+			} else {
+				results = contactMocks
 			}
 			if (results.length > 0)
 				return results
