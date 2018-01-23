@@ -5,8 +5,6 @@ const { app } = require('webfunc')
 const { makeExecutableSchema } = require('graphql-tools')
 const { glue } = require('schemaglue')
 const https = require('https')
-const j = require('jsrsasign')
-
 
 const { schema, resolver } = glue('./src/graphql')
 
