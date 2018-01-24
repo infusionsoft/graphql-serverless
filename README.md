@@ -1,3 +1,39 @@
+# Infusionsoft Instructions
+#### Run Locally
+```
+npm install
+npm start
+
+# http://localhost:4000?query=<graphql-query-here>
+# or
+# http://localhos:4000/graphiql
+
+```
+
+#### Deploy to cloud function
+```
+# Install gcloud cli
+Instructions here -> https://cloud.google.com/sdk/docs/quickstart-macos
+
+# Configure gcloud
+gcloud auth login
+gcloud config set project is-optimus-app-sand
+
+# Install Zeit Now, cli for deployment
+npm install now -g;
+
+# Deploy to Google Cloud Function graphql-testing
+# See now.json and package.json for configuration
+npm run deploy
+
+# Navigate to google cloud function to get URL. Enjoy!
+
+```
+
+
+
+
+
 # Welcome To The Universal GraphQL Server Template &middot;  [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Neap](https://neap.co/img/made_by_neap.svg)](#this-is-what-we-re-up-to)
 
 __*Clone this project to create your own GraphQL server in less than 1 minute and deploy it on any serverless platform.*__. 
