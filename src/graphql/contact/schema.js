@@ -12,8 +12,6 @@ exports.query = `
   #
   # _Arguments_
   # - **id**: Product's id (optional)
-  contact(firstName: String, lastName: String): [Contact],
-  # contacts(firstName: String): [Contact],
-  # contacts(lastName: String): [Contact],
+  contacts(firstName: String, lastName: String): [Contact],
   contactMocks(firstName: String): [Contact]
 `
