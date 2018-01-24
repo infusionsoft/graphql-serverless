@@ -39,7 +39,7 @@ const requestConfig = (authHeader) => {
 
 const authenticate = (req, res, next) => {
 	// Will use jsrsasign for validating eventually
-	if (req.hostname != 'localhost' || !(req.url.startsWith('/graphiql'))) {
+	if (req.hostname != 'localhost') {
 		const authHeader = req.headers['authorization']
 		if (authHeader) {
 			instance.request(requestConfig(authHeader))
