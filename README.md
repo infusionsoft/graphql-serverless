@@ -4,9 +4,9 @@
 npm install
 npm start
 
-# http://localhost:4000?query=<graphql-query-here>
-# or
-# http://localhos:4000/graphiql
+# To send a query, do a GET request to http://localhost:4000?query=<graphql-query-here>
+
+# To view the web query tool navigate your browser to http://localhos:4000/graphiql
 
 ```
 
@@ -30,8 +30,13 @@ npm run deploy
 
 ```
 
+### Authentication
+You'll need to get a token to authenticate with google cloud. The following url will redirect you to a blank 
+screen but the token will be in the url.
 
+https://signin-sand.infusiontest.com/login?service=http://localhost/hook
 
+Send the token as an authorization header: `authorization: Bearer <token-here>`
 
 
 # Welcome To The Universal GraphQL Server Template &middot;  [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Neap](https://neap.co/img/made_by_neap.svg)](#this-is-what-we-re-up-to)
