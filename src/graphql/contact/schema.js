@@ -31,16 +31,17 @@ type PhysicalAddress {
     displayOrder: Int
 }
 
-type Query {
+type ReturnedQuery {
+    total: Int
     contacts: [Contact]
 }
 `
 // Notice that we have omitted to wrap the above with 'type Query { }'
 exports.query = `
-    # ### GET contacts
+    # ### GET getContact
     #
     # _Arguments_
     # - **accountId**: account's id (required)
     # - **id**: contact's id (optional)
-    contacts(accountId: String): ListContact
+    getContact(accountId: String): ReturnedQuery
 `

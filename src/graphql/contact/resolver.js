@@ -66,38 +66,11 @@ exports.resolver = {
         //     })
         // },
 
-        contacts(root, { accountId }, context) {
-            console.log("root - ", JSON.stringify(root, null, 2))
-            console.log("context - ", JSON.stringify(context, null, 2));
-            console.log("postmanMock Request", getMockContacts(accountId))
+        getContact(root, { accountId }, context) {
             return postmanMock.request(getMockContacts(accountId))
                 .then((response) => {
-                    console.log("response -", JSON.stringify(response, null, 2));
-                    var results = []
-                    if (accountId) {
-                        results = results.concat(response.filter(c => c.accountId == accountId))
-                    } else {
-                        throw httpError(401);
-                    }
-                    
-                    if (firstName) {
-                        results = results.filter(c => c.firstName == firstName)
-                    }
-                    
-                    if (lastName) {
-                        results = results.filter(c => c.lastName == lastName)
-                    }
-                    
-                    if (id) {
-                        results = results.filter(c => c.id == id)
-                    }
-                    
-
-                    if (results.length > 0) {
-                        return results
-                    } else {
-                        throw httpError(404, `Contact with id ${id} does not exist.`)
-                    }
+                    console.log("response -", response.data)
+                    return response.data
                 })
                 .catch((error) => {
                     console.log("error - ", error)
