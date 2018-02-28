@@ -9,17 +9,17 @@ const https = require('https')
 const { schema, resolver } = glue('./src/graphql')
 
 const executableSchema = makeExecutableSchema({
-	typeDefs: transpileSchema(schema),
-	resolvers: resolver
+    typeDefs: transpileSchema(schema),
+    resolvers: resolver
 })
 
 const graphqlOptions = (req, res) => {
-	return {
-		schema: executableSchema,
-		graphiql: true,
-		endpointURL: '/graphiql',
-		context: {authHeader: req.headers['authorization']}		
-	}
+    return {
+        schema: executableSchema,
+        graphiql: true,
+        endpointURL: '/graphiql',
+        context: {authHeader: req.headers['authorization']}
+    }
 }
 
 const instance = axios.create({
@@ -28,37 +28,37 @@ const instance = axios.create({
 });
 
 const requestConfig = (authHeader) => {
-	return {
-		method: 'get',
-		url: '/jwt',
-		headers: {'Authorization': authHeader},
-		httpsAgent: new https.Agent({ keepAlive: true })
-	}
+    return {
+        method: 'get',
+        url: '/jwt',
+        headers: {'Authorization': authHeader},
+        httpsAgent: new https.Agent({ keepAlive: true })
+    }
 }
-  
+
 
 const authenticate = (req, res, next) => {
-	// Will use jsrsasign for validating eventually
-	if (req.hostname != 'localhost') {
-		const authHeader = req.headers['authorization']
-		if (authHeader) {
-			instance.request(requestConfig(authHeader))
-			.then((response) => {
-				const exp = response.data.exp
-				const expDate = new Date(0)
-				expDate.setUTCSeconds(exp)
-				if (expDate < new Date()) {
-					res.status(401).send(`Invalid Authorization Header.`)
-				}
-			})
-			.catch((err) => {
-				res.status(401).send(`Error authenticating.`)
-			})
-		} else {
-			res.status(401).send(`Missing 'Authorization' header.`)
-		}
-	}
-	next()
+    // Will use jsrsasign for validating eventually
+    if (req.hostname != 'localhost') {
+        const authHeader = req.headers['authorization']
+        if (authHeader) {
+            instance.request(requestConfig(authHeader))
+            .then((response) => {
+                const exp = response.data.exp
+                const expDate = new Date(0)
+                expDate.setUTCSeconds(exp)
+                if (expDate < new Date()) {
+                    res.status(401).send(`Invalid Authorization Header.`)
+                }
+            })
+            .catch((err) => {
+                res.status(401).send(`Error authenticating.`)
+            })
+        } else {
+            res.status(401).send(`Missing 'Authorization' header.`)
+        }
+    }
+    next()
 }
 
 app.use(authenticate)

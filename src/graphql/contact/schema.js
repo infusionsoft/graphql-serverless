@@ -1,17 +1,46 @@
 exports.schema = `
 type Contact {
-  id: ID!
-  firstName: String!
-  lastName: String
-  email: String
+    id: ID
+    communicationChannelIds: [String]
+    fullName: String
+    givenName: String
+    company: String
+    jobTitle: String
+    groups: [String]
+    phoneNumbers: [Entity]
+    emailAddresses: [Entity]
+    addresses: [PhysicalAddress]
+    classifications: [String]
+    types: [String]
+}
+
+type Entity {
+    value: String
+    type: String
+    displayOrder: Int
+}
+
+type PhysicalAddress {
+    streetAddress1: String
+    streetAddress2: String
+    postalCode: String
+    postOfficeBoxNumber: String
+    locality: String
+    region: String
+    country: String
+    displayOrder: Int
+}
+
+type Query {
+    contacts: [Contact]
 }
 `
 // Notice that we have omitted to wrap the above with 'type Query { }'
 exports.query = `
-  # ### GET contacts
-  #
-  # _Arguments_
-  # - **id**: Product's id (optional)
-  contacts(firstName: String, lastName: String): [Contact],
-  contactMocks(firstName: String): [Contact]
+    # ### GET contacts
+    #
+    # _Arguments_
+    # - **accountId**: account's id (required)
+    # - **id**: contact's id (optional)
+    contacts(accountId: String): ListContact
 `
